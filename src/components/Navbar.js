@@ -4,15 +4,21 @@ import bell from '../assets/BellRinging.svg'
 import person from '../assets/UserCircle.svg'
 import hamburger from '../assets/Hamburger.svg'
 import arrow from '../assets/Slider.svg'
+import SideElements from '../elements/SideElements'
+import Dashboard from '../assets/Dashboard_symb.svg'
+import totm from '../assets/Totm_symb.svg'
+import sum from '../assets/Summary_symb.svg'
+import bank from '../assets/Bank_symb.svg'
+
 
 const Navbar = () => {
 
   //Maintaining state of Hamburger Menu in Mobile View
   const [menu, setMenu] = useState(false)
-  
+
   //When menu==true, displays the menu
   let disp = menu ? 'hidden' : ''
-  
+
   //WHen menu==false, hides the menu
   let hide = menu ? '' : 'hidden'
   return (
@@ -44,9 +50,29 @@ const Navbar = () => {
         <button className={'hover:bg-[#80808066] px-2 ' + disp} onClick={() => { setMenu(true) }}><img src={hamburger} alt='' /></button>
         <button className={'hover:bg-[#80808066] px-2 ' + hide} onClick={() => { setMenu(false) }}><img src={arrow} alt='' /></button>
       </div>
+      { //rendering Mobile Navbar when Menu is set to true using an external component
+      menu && <MobileNav />
+      }
 
     </>
   )
 }
 
 export default Navbar
+
+const MobileNav = () => {
+  return (
+    <>
+      <div className={'min-[640px]:hidden max-[639px]:border-soild min-[640px]:border-[#808080] min-[640px]:border-[0.5px] z-50 absolute bg-[white] drop-shadow-lg'}>
+        <SideElements src={Dashboard} title='My Dashboard' className='ml-5' cl={''} />
+
+        <SideElements src={totm} title='TOTM links' className='ml-4' cl={''} />
+
+        <SideElements src={sum} title='Daily Summary' className='ml-3' cl={''} />
+
+        <SideElements src={bank} title='Bank Details' className='ml-3' cl={''} />
+      </div>
+    </>
+  )
+}
+
