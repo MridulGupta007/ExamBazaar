@@ -6,8 +6,14 @@ import hamburger from '../assets/Hamburger.svg'
 import arrow from '../assets/Slider.svg'
 
 const Navbar = () => {
+
+  //Maintaining state of Hamburger Menu in Mobile View
   const [menu, setMenu] = useState(false)
+  
+  //When menu==true, displays the menu
   let disp = menu ? 'hidden' : ''
+  
+  //WHen menu==false, hides the menu
   let hide = menu ? '' : 'hidden'
   return (
     <>

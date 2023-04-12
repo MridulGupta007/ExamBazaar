@@ -8,7 +8,11 @@ import slider from '../assets/Slider.svg'
 
 
 const Sidebar = () => {
+
+  //Used to hide all the elements of the Sidebar
   const [display, setDisplay] = useState('')
+  
+  //used to render a reverse slider when sidebar collapses in desktop view
   const [boo, setBoo] = useState(false)
   return (
     <>
@@ -21,7 +25,9 @@ const Sidebar = () => {
           }}>
           <img src={slider} alt='' />
         </button>
-        {boo && <button className='p-5 rotate-180'
+        
+        { //conditionally render the reverse Slider when sidebar collapses in desktop view
+        boo && <button className='p-5 rotate-180'
           onClick={() => {
             setDisplay('')
             setBoo(false)

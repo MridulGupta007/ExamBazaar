@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import Input from '../elements/Input';
 
 const InputForm = () => {
-
+  
+  //checks when to disable input fields and display date
   const [disable, setDisabled] = useState(false)
+  
+  //maintains when to display the SAVE button, used to hide the SAVE button when clicked
   const [display, setDisplay] = useState('')
+  
+  //Months array utilised to extract month from 'new Date()' object
   const month = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 
 
@@ -18,6 +23,9 @@ const InputForm = () => {
       </div>
 
       <div className='border-solid border-[#808080] border-[0.5px] p-3 min-[768px]:w-[90%]'>
+         
+        {/* passing 'disable' variable as the value for prop: disabled. Controls the
+            freezing of Input fields */}
 
         <Input type='text' placeholder="Account Holder Name" name='Holder' disabled={disable} />
         <Input type='number' placeholder='Account Number' name='Acc. Number' disabled={disable} />
@@ -34,6 +42,7 @@ const InputForm = () => {
             <input type='checkbox' id='cons' disabled={disable} className=''></input>
             <label for='cons'>I confirm that the information given in this form is true, complete and accurate. I understand that in case of incorrect details, Exambazaar will not be responsible for any loss of pay.</label>
             {
+              //conditional rendering of Date of submission
               disable && <p className='font-bold'>{`Filled on ${month[(new Date()).getMonth()]} ${(new Date()).getDate()}, ${(new Date()).getFullYear()} `}</p>
             }
           </div>
@@ -41,7 +50,9 @@ const InputForm = () => {
 
 
         <div className='flex justify-end mt-5'>
-
+          
+          {/* SAVE button to freeze the input fields and render Date of submission
+              changes the state of 'disabled' and 'display' to improve fuctionality */}
           <button
             onClick={() => {
               setDisabled(false)
@@ -51,7 +62,8 @@ const InputForm = () => {
             className='w-20 h-10 bg-[whitesmoke] text-black text-[18px] rounded-sm hover:bg-[#dcdcdc]'>
             Edit
           </button>
-
+          
+          {/*EDIT functionality used to change wrong inputs */}
           <button className={'w-20 h-10 bg-[#3AA078D9] text-white text-[18px] rounded-sm hover:bg-[#3AA078] ' + display}
             type='submit'
             onClick={() => {

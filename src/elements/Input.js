@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 
 const Input = (props) => {
-  const [value, setValue] = useState(undefined)
 
+  //holds the value of the input fields
+  const [value, setValue] = useState(undefined)
+  
+  //when SAVE button is pressed, disabled is turned to true. 
+  //Then value is stored to Local Storage with key=id of input field
   props.disabled ? localStorage.setItem(`${props.name}`, value) : localStorage.removeItem(`${props.name}`, value)
 
 
