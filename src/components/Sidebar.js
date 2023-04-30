@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import SideElements from '../elements/SideElements';
 import Dashboard from '../assets/Dashboard_symb.svg'
 import totm from '../assets/Totm_symb.svg'
 import sum from '../assets/Summary_symb.svg'
 import bank from '../assets/Bank_symb.svg'
 import slider from '../assets/Slider.svg'
-
+import { MenuContext } from './Context';
+//import arrow from '../assets/Arrow.svg'
 
 const Sidebar = () => {
 
+  
+   const menu = useContext(MenuContext)
   //Used to hide all the elements of the Sidebar
   const [display, setDisplay] = useState('')
-  
+
   //used to render a reverse slider when sidebar collapses in desktop view
   const [boo, setBoo] = useState(false)
+
   return (
     <>
-      <div className={'max-[639px]:hidden min-[640px]:border-soild min-[640px]:border-[#808080] min-[640px]:border-[0.5px] '}>
+      <div className={'hidden sm:inline-block border-solid border-color border '}>
 
         <button className={'p-5 ' + display}
           onClick={() => {
@@ -25,15 +29,15 @@ const Sidebar = () => {
           }}>
           <img src={slider} alt='' />
         </button>
-        
+
         { //conditionally render the reverse Slider when sidebar collapses in desktop view
-        boo && <button className='p-5 rotate-180'
-          onClick={() => {
-            setDisplay('')
-            setBoo(false)
-          }}>
-          <img src={slider} alt='' />
-        </button>}
+          boo && <button className='p-5 rotate-180'
+            onClick={() => {
+              setDisplay('')
+              setBoo(false)
+            }}>
+            <img src={slider} alt='' />
+          </button>}
 
         <SideElements src={Dashboard} title='My Dashboard' className='ml-5' cl={display} />
 
@@ -41,11 +45,44 @@ const Sidebar = () => {
 
         <SideElements src={sum} title='Daily Summary' className='ml-3' cl={display} />
 
-        <SideElements src={bank} title='Bank Details' className='ml-3' cl={display} />
+        <SideElements src={bank} title='Bank Details' className='ml-3' cl={'bg-side-element '+display} />
+
+      </div>
+      
+       {menu.mobNav && <MobBar />}
+
+    </>
+  )
+}
+
+export default Sidebar
+
+const MobBar = () => {
+
+
+  //const mridul = useContext(MenuContext)
+  return (
+    <>
+      <div className={'absolute h-full w-full bg-white z-50 sm:hidden '}>
+
+        {/* <button className={'hover:bg-[#80808066] p-2'} onClick={() => {
+          console.log(mridul.mobNav)
+          mridul.setMobNav(false)
+        }}><img src={arrow} alt='' width='10px' className='rotate-180'/></button> */}
+
+
+        <SideElements src={Dashboard} title='My Dashboard' className='ml-5' />
+
+        <SideElements src={totm} title='TOTM links' className='ml-4' />
+
+        <SideElements src={sum} title='Daily Summary' className='ml-3' />
+
+        <SideElements src={bank} title='Bank Details' className='ml-3' cl='bg-side-element' />
 
       </div>
     </>
   )
 }
 
-export default Sidebar
+export {MobBar}
+
