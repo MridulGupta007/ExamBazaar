@@ -7,7 +7,8 @@ import { MenuContext } from './Context'
 import Arrow from '../assets/Arrow.svg'
 
 const Navbar = () => {
-
+  
+  //Using the Context created in Context.js
   const dispContext = useContext(MenuContext)
 
 
@@ -37,7 +38,7 @@ const Navbar = () => {
 
       </div>
       <div className='sm:hidden border-b border-color h-10 flex items-center'>
-
+        {/*Conditionally rendering hamburger when the menu is closed using Context Hook */}
         {!dispContext.mobNav && <button 
                  className={' px-2 '} 
                  onClick={() => { console.log(dispContext.mobNav)

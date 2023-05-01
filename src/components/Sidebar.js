@@ -6,13 +6,14 @@ import sum from '../assets/Summary_symb.svg'
 import bank from '../assets/Bank_symb.svg'
 import slider from '../assets/Slider.svg'
 import { MenuContext } from './Context';
-//import arrow from '../assets/Arrow.svg'
+
 
 const Sidebar = () => {
-
   
-   const menu = useContext(MenuContext)
-  //Used to hide all the elements of the Sidebar
+  //Using the Context created in Context.js 
+  const menu = useContext(MenuContext)
+
+ //Used to hide all the elements of the Sidebar
   const [display, setDisplay] = useState('')
 
   //used to render a reverse slider when sidebar collapses in desktop view
@@ -48,7 +49,7 @@ const Sidebar = () => {
         <SideElements src={bank} title='Bank Details' className='ml-3' cl={'bg-side-element '+display} />
 
       </div>
-      
+      {/* Conditional Rendering of Mobile Navbar when state turns to true */}
        {menu.mobNav && <MobBar />}
 
     </>
@@ -60,15 +61,11 @@ export default Sidebar
 const MobBar = () => {
 
 
-  //const mridul = useContext(MenuContext)
+
   return (
     <>
       <div className={'absolute h-full w-full bg-white z-50 sm:hidden '}>
 
-        {/* <button className={'hover:bg-[#80808066] p-2'} onClick={() => {
-          console.log(mridul.mobNav)
-          mridul.setMobNav(false)
-        }}><img src={arrow} alt='' width='10px' className='rotate-180'/></button> */}
 
 
         <SideElements src={Dashboard} title='My Dashboard' className='ml-5' />
