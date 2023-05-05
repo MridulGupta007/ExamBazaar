@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className='hidden lg:flex font-sans font-bold text-[20px] leading-nav justify-between h-16 items-center border-b border-color px-7'>
+      <div className='hidden sm:flex font-sans font-bold text-[20px] leading-nav justify-between h-16 items-center border-b border-color px-7'>
 
         <h3>Logo</h3>
 
@@ -40,7 +40,7 @@ const Navbar = () => {
       <div className='sm:hidden border-b border-color h-10 flex items-center'>
         {/*Conditionally rendering hamburger when the menu is closed using Context Hook */}
         {!dispContext.mobNav && <button 
-                 className={' px-2 '} 
+                 className=' px-2 ' 
                  onClick={() => { console.log(dispContext.mobNav)
                                   dispContext.setMobNav(true);}}>
                                                                   <img src={hamburger} alt='' />

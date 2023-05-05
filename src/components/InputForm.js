@@ -6,8 +6,6 @@ const InputForm = () => {
   //checks when to disable input fields and display date
   const [disable, setDisabled] = useState(false)
 
-  //maintains when to display the SAVE button, used to hide the SAVE button when clicked
-  const [display, setDisplay] = useState('')
 
   //Months array utilised to extract month from 'new Date()' object
   const month = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
@@ -53,17 +51,17 @@ const InputForm = () => {
 
           {/* SAVE button to freeze the input fields and render Date of submission
               changes the state of 'disabled' and 'display' to improve fuctionality */}
-          <button className={'w-20 h-10 bg-exam-green-light font-sans font-bold text-[20px] leading-nav text-white rounded border-exam-green-light hover:bg-exam-green ' + display}
+          {!disable && <button className='w-3/12 h-10 sm:w-2/12 md:w-16 lg:w-20 bg-exam-green-light font-sans font-bold text-[20px] leading-nav text-white rounded border-exam-green-light hover:bg-exam-green'
             type='submit'
             onClick={() => {
 
               setDisabled(true)
-              setDisplay('hidden')
+              
 
 
             }}>
             Save
-          </button>
+          </button>}
 
         </div>
 
