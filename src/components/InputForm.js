@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../elements/Input';
+import Button from '../elements/Button';
 
 const InputForm = () => {
 
@@ -51,7 +52,7 @@ const InputForm = () => {
 
           {/* SAVE button to freeze the input fields and render Date of submission
               changes the state of 'disabled' and 'display' to improve fuctionality */}
-          {!disable && <button className='w-3/12 h-10 sm:w-2/12 md:w-16 lg:w-20 bg-exam-green-light font-sans font-bold text-[20px] leading-nav text-white rounded border-exam-green-light hover:bg-exam-green'
+          {/* {!disable && <button className='w-3/12 h-10 sm:w-2/12 md:w-16 lg:w-20 bg-exam-green-light font-sans font-bold text-[20px] leading-nav text-white rounded border-exam-green-light hover:bg-exam-green'
             type='submit'
             onClick={() => {
 
@@ -61,7 +62,8 @@ const InputForm = () => {
 
             }}>
             Save
-          </button>}
+          </button>} */}
+          {!disable && <Button name='Save' className='bg-exam-green-light text-white hover:bg-exam-green border-exam-green-light' func={() => {setDisabled(true)}} />}
 
         </div>
 
